@@ -61,7 +61,8 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 /* scrot */
-static const char *scrotcmd[] = { "scrot", NULL};
+static const char *scrotcmd[]  = { "scrot", "-t", "25", NULL };
+static const char *scrotfocusedcmd[]  = { "scrot", "--focused", NULL };
 
 /* movestack patch*/
 #include "movestack.c"
@@ -70,7 +71,9 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_s,      spawn,          {.v = scrotcmd } },
+	{ 0,            		XK_Print,  spawn,      	   {.v = scrotcmd } },
+	{ ShiftMask,    		XK_Print,  spawn,      	   {.v = scrotfocusedcmd } },
+	{ ControlMask,  		XK_Print,  spawn,    	   SHCMD("scrot --select") }, /*sleep 1s;*/
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -126,4 +129,3 @@ static const Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
