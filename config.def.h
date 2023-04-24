@@ -29,10 +29,11 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 1,       0,           -1 },
-	{ "Brave",    NULL,       NULL,       1 << 1,       0,           -1 },
+	{ "firefox",  NULL,       NULL,       1 << 0,       0,           -1 },
+	{ "Brave",    NULL,       NULL,       1 << 0,       0,           -1 },
 	{ "Emacs",    NULL,       NULL,       1 << 2,       0,           -1 },
-	{ "Thunderbird",    NULL,       NULL,       1 << 6,       0,           -1 },
+	{ "Codium",    NULL,       NULL,       1 << 2,       0,           -1 },
+	{ "thunderbird",          NULL,       NULL,     1 << 6,     0,        -1, },
 	{ "Steam",    NULL,       NULL,       1 << 7,       0,           -1 },
 	{ "Kdenlive", NULL,       NULL,       1 << 8,       0,           -1 },
 	{ "Resolve",  NULL,       NULL,       1 << 8,       0,           -1 },
